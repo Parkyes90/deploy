@@ -1,3 +1,0 @@
-### Project
-
-for TDD Practice

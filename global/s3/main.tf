@@ -31,24 +31,3 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
-
-
-terraform {
-  backend "s3" {
-    bucket = "example-terraform-up-and-running-state"
-    key = "workspaces-example/s3/terraform.tfstate"
-    region = "ap-northeast-2"
-
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt = true
-  }
-}
-
-resource "aws_instance" "example" {
-  ami                    = "ami-04876f29fd3a5e8ba"
-  instance_type          = "t2.micro"
-
-  tags = {
-    Name = "terraform-example"
-  }
-}
